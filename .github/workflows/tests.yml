@@ -8,7 +8,7 @@ jobs:
   test-bot:
     strategy:
       matrix:
-        os: [ubuntu-22.04, macos-12]
+        os: [ubuntu-22.04, macos-11, macos-12]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Set up Homebrew
@@ -42,3 +42,17 @@ jobs:
         with:
           name: bottles
           path: '*.bottle.*'
+  
+  publish-pr:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    needs: test-bot
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+      
+      - name: Trigger publish
+        run: gh workflow run publish.yml -f pull_request=$PR_NUMBER
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          GH_TOKEN: ${{ github.token }}
