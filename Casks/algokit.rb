@@ -2,8 +2,8 @@
 # frozen_string_literal: true
 
 cask "algokit" do
-  version "0.1.3"
-  sha256 "c50a9d29322f87f9441908f0bc420b1780e92384ce33b9e8d48ac86bdf344f23"
+  version "0.2.0"
+  sha256 "280ee02978324d1787da98bba965d556ba11ec910ba23be00b6e7aa1204757e7"
 
   url "https://github.com/algorandfoundation/algokit-cli/releases/download/v#{version}/algokit-#{version}-py3-none-any.whl"
   name "algokit"
@@ -15,7 +15,7 @@ cask "algokit" do
 
   installer script: {
     executable:   "pipx",
-    args:         ["install", "--force", "#{staged_path}/algokit-0.1.3-py3-none-any.whl"],
+    args:         ["install", "--force", "#{staged_path}/algokit-0.2.0-py3-none-any.whl"],
     print_stderr: false,
   }
   installer script: {
