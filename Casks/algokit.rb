@@ -1,6 +1,6 @@
 cask "algokit" do
-  version "1.10.19"
-  sha256 "2221d6d73e1ffd487a90328dc505fefbc63b10eb4ec98af311f7fb27963b00ba"
+  version "1.10.20"
+  sha256 "649b972a50d418a7791ed3b72e65421e24479764980f1b2dee24e626bc0f22f2"
 
   url "https://github.com/aorumbayev/algokit-cli/releases/download/v#{version}/algokit-v#{version}-macos-py3.12.zip"
   name "algokit"
