@@ -7,7 +7,7 @@ cask "algokit" do
   desc "Algorand development kit command-line interface"
   homepage "https://github.com/aorumbayev/algokit-cli"
 
-  binary "#{staged_path}/#{token}"
+  binary "#{staged_path}/#{token}/dist/algokit/algokit"
 
   postflight do
     set_permissions "#{staged_path}/#{token}", "0755"
