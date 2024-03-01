@@ -2,8 +2,8 @@
 # frozen_string_literal: true
 
 cask "algokit" do
-  version "1.12.1"
-  sha256 "41a6f7c4493a6ef879bcee6e60b81c0f2954f710e3e031799b290003a590049b"
+  version "1.12.2"
+  sha256 "1a8125d4ea1d87268a85c1225613e02c4063eba5fc84ddf8365029263617c4bc"
 
   url "https://github.com/algorandfoundation/algokit-cli/releases/download/v#{version}/algokit-#{version}-py3-none-any.whl"
   name "algokit"
