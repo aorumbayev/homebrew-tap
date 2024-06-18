@@ -42,7 +42,7 @@ jobs:
         uses: actions/checkout@v3
       
       - name: Trigger publish
-        run: gh workflow run publish.yml -f pull_request=$PR_NUMBER
+        run: gh workflow run publish.yml -f pull_request="${PR_NUMBER}"
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           GH_TOKEN: ${{ github.token }}
