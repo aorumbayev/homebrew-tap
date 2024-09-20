@@ -1,34 +1,20 @@
-# typed: false
-# frozen_string_literal: true
-
 cask "algokit" do
-  version "2.3.0"
-  sha256 "d91ae981080e3e44d389dd113bc1a2dccd7e01898c4b5fa2a284dcc8569609a6"
+  arch arm: "arm64", intel: "x64"
 
-  url "https://github.com/algorandfoundation/algokit-cli/releases/download/v#{version}/algokit-#{version}-py3-none-any.whl"
+  version "2.4.1"
+  sha256 arm:   "02adbda5a7b4fce3fadba1e70c29c21a2b922a39ad571e622d0a566b2cda010b",
+         intel: "3616e742b651b8b94f4caabe36bdd255982482db73005cfa95bf3b8d509d9448"
+
+  url "https://github.com/algorandfoundation/algokit-cli/releases/download/v#{version}/algokit-#{version}-macos_#{arch}.tar.gz"
   name "algokit"
   desc "Algorand development kit command-line interface"
   homepage "https://github.com/algorandfoundation/algokit-cli"
 
-  depends_on formula: "pipx"
-  container type: :naked
+  binary "#{staged_path}/#{token}"
 
-  installer script: {
-    executable:   "pipx",
-    args:         ["install", "--force", "#{staged_path}/algokit-#{version}-py3-none-any.whl"],
-    print_stderr: false,
-  }
-  installer script: {
-    executable: "pipx",
-    args:       ["ensurepath"],
-  }
-  installer script: {
-    executable: "bash",
-    args:       ["-c", "echo $(which pipx) uninstall algokit >#{staged_path}/uninstall.sh"],
-  }
+  postflight do
+    set_permissions "#{staged_path}/#{token}", "0755"
+  end
 
-  uninstall script: {
-    executable: "bash",
-    args:       ["#{staged_path}/uninstall.sh"],
-  }
+  uninstall delete: "/usr/local/bin/#{token}"
 end
