@@ -29,18 +29,18 @@ jobs:
 
       - run: brew test-bot --only-cleanup-before -d -v
 
-      - run: brew test-bot --only-setup -d -v 
+      - run: brew test-bot --only-setup -d -v
 
-      - run: brew test-bot --only-tap-syntax -d -v 
-  
+      - run: brew test-bot --only-tap-syntax -d -v
+
   publish-pr:
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
     needs: test-bot
     steps:
       - name: Checkout source code
-        uses: actions/checkout@v3
-      
+        uses: actions/checkout@v4
+
       - name: Trigger publish
         run: gh workflow run publish.yml -f pull_request="${PR_NUMBER}"
         env:
