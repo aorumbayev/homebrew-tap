@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       pull_request:
-        description: 'Pull Request number to publish'
+        description: "Pull Request number to publish"
         required: true
 jobs:
   pr-pull:
