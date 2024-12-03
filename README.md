@@ -10,7 +10,7 @@ Or `brew tap algorandfoundation/tap` and then `brew install <formula>`.
 
 To install algokit: `brew install algorandfoundation/tap/algokit`
 
-test
+test2
 
 ## Documentation
 
